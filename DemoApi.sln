@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreOCR.Services", "CoreOCR.services\CoreOCR.Services.csproj", "{C675324B-42AF-4A1D-8335-C5E07CC044BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreOCR.Data", "CoreOCR.Data\CoreOCR.Data.csproj", "{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraOCR.WebAPI", "DemoWebsite\LibraOCR.WebAPI.csproj", "{4A3EBCE5-9082-447C-8197-4031BB560939}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Debug|x64.Build.0 = Debug|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Release|x64.ActiveCfg = Release|Any CPU
+		{C675324B-42AF-4A1D-8335-C5E07CC044BC}.Release|x64.Build.0 = Release|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Debug|x64.Build.0 = Debug|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Release|x64.ActiveCfg = Release|Any CPU
+		{12EFB800-56CD-4700-8FD7-6C3BC7C2528E}.Release|x64.Build.0 = Release|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Debug|x64.Build.0 = Debug|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Release|x64.ActiveCfg = Release|Any CPU
+		{4A3EBCE5-9082-447C-8197-4031BB560939}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {528BDBED-3959-48B1-9075-09D4FB003929}
+	EndGlobalSection
+EndGlobal
