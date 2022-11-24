@@ -22,7 +22,8 @@ namespace CoreOCR.Services.Services
         }
         public async Task<string> ReadHealthRecords(IFormFile file)
         {
-            var body = await AddAsync("extract/hssk", file);
+            var body = await AddFileHealthRecordsAsync("hssk_img", file);
+
             return body;
         }
     }

@@ -11,6 +11,7 @@ namespace CoreOCR.Services.Services
     public interface IAdministrativeDocumentsService
     {
         public Task<string> ReadAdministrativeDocuments(IFormFile file);
+        public Task<string> ReadAdministrativeDocumentsPDF(IFormFile file);
 
     }
     public class AdministrativeDocumentsService : BaseApiClient, IAdministrativeDocumentsService
@@ -22,7 +23,14 @@ namespace CoreOCR.Services.Services
         }
         public async Task<string> ReadAdministrativeDocuments(IFormFile file)
         {
-            var body = await AddAsync("extract/gthc_img", file);
+            var body = await AddFileAdministrativeDocumentsAsync("gthc_img", file);
+
+            return body;
+        }
+        public async Task<string> ReadAdministrativeDocumentsPDF(IFormFile file)
+        {
+            var body = await AddFileAdministrativeDocumentsAsync("gthc_pdf", file);
+
             return body;
         }
     }

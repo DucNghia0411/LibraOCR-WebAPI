@@ -25,6 +25,7 @@ namespace LibraOCR.WebAPI.Controllers
         private readonly IHealthRecordsService _healthRecordsService;
         private readonly IIDCardsService _iDCardsService;
         private readonly IVehicleRegistrationsService _vehicleRegistrationsService;
+        private readonly ITransferPaperService _transferPaperService;
 
         public OCRInfoController(IHttpClientFactory httpClientFactory,
             IHttpContextAccessor httpContextAccessor,
@@ -32,7 +33,8 @@ namespace LibraOCR.WebAPI.Controllers
             IAdministrativeDocumentsService administrativeDocumentsService,
             IHealthRecordsService healthRecordsService,
             IIDCardsService iDCardsService,
-            IVehicleRegistrationsService vehicleRegistrationsService)
+            IVehicleRegistrationsService vehicleRegistrationsService,
+            ITransferPaperService transferPaperService)
         {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
@@ -41,6 +43,7 @@ namespace LibraOCR.WebAPI.Controllers
             _healthRecordsService = healthRecordsService;
             _vehicleRegistrationsService = vehicleRegistrationsService;
             _iDCardsService = iDCardsService;
+            _transferPaperService = transferPaperService;
         }
         [Authorize]
         [HttpPost("gthc")]
@@ -51,6 +54,52 @@ namespace LibraOCR.WebAPI.Controllers
                 if (CheckFileType(file.FileName))
                 {
                     string result = await this._administrativeDocumentsService.ReadAdministrativeDocuments(file);
+                    if (result != null && result.Any())
+                    {
+                        return new RequestResponse
+                        {
+                            Status = ErrorCode.Success,
+                            Content = result,
+                            Message = "Success"
+                        };
+                    }
+                }
+                else
+                {
+                    return new RequestResponse
+                    {
+                        Status = ErrorCode.InvalidFile,
+                        Content = string.Empty,
+                        Message = "Invalid File"
+                    };
+                }
+                return new RequestResponse
+                {
+                    Status = ErrorCode.OutResource,
+                    Content = string.Empty,
+                    Message = "Resource is not available"
+                };
+            }
+            catch (Exception ex)
+            {
+                string errorDetail = ex.InnerException != null ? ex.InnerException.ToString() : ex.Message.ToString();
+                return new RequestResponse
+                {
+                    Status = ErrorCode.GeneralFailure,
+                    Content = errorDetail,
+                    Message = "General Failure"
+                };
+            }
+        }
+        [Authorize]
+        [HttpPost("gthcpdf")]
+        public async Task<RequestResponse> GetInfoAdministrativeDocumentsPDF(IFormFile file)
+        {
+            try
+            {
+                if (CheckPdfType(file.FileName))
+                {
+                    string result = await this._administrativeDocumentsService.ReadAdministrativeDocumentsPDF(file);
                     if (result != null && result.Any())
                     {
                         return new RequestResponse
@@ -226,6 +275,52 @@ namespace LibraOCR.WebAPI.Controllers
                 };
             }
         }
+        [Authorize]
+        [HttpPost("gctpdf")]
+        public async Task<RequestResponse> GetInfoTransferPaperPDF(IFormFile file)
+        {
+            try
+            {
+                if (CheckPdfType(file.FileName))
+                {
+                    string result = await this._transferPaperService.ReadTransferPaper(file);
+                    if (result != null && result.Any())
+                    {
+                        return new RequestResponse
+                        {
+                            Status = ErrorCode.Success,
+                            Content = result,
+                            Message = "Success"
+                        };
+                    }
+                }
+                else
+                {
+                    return new RequestResponse
+                    {
+                        Status = ErrorCode.InvalidFile,
+                        Content = string.Empty,
+                        Message = "Invalid File"
+                    };
+                }
+                return new RequestResponse
+                {
+                    Status = ErrorCode.OutResource,
+                    Content = string.Empty,
+                    Message = "Resource is not available"
+                };
+            }
+            catch (Exception ex)
+            {
+                string errorDetail = ex.InnerException != null ? ex.InnerException.ToString() : ex.Message.ToString();
+                return new RequestResponse
+                {
+                    Status = ErrorCode.GeneralFailure,
+                    Content = errorDetail,
+                    Message = "General Failure"
+                };
+            }
+        }
         bool CheckFileType(string fileName)
         {
             string ext = Path.GetExtension(fileName);
@@ -241,6 +336,16 @@ namespace LibraOCR.WebAPI.Controllers
                     return false;
             }
         }
-
+        bool CheckPdfType(string fileName)
+        {
+            string ext = Path.GetExtension(fileName);
+            switch (ext.ToLower())
+            {
+                case ".pdf":
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }

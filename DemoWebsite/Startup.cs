@@ -109,6 +109,8 @@ namespace LibraOCR.WebAPI
             services.AddTransient<IHealthRecordsService, HealthRecordsService>();
             services.AddTransient<IIDCardsService, IDCardsService>();
             services.AddTransient<IVehicleRegistrationsService, VehicleRegistrationsService>();
+            services.AddTransient<ITransferPaperService, TransferPaperService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

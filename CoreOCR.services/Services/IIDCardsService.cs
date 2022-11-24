@@ -22,7 +22,8 @@ namespace CoreOCR.Services.Services
         }
         public async Task<string> ReadIDCards(IFormFile file)
         {
-            var body = await AddAsync("extract/cmnd", file);
+            var body = await AddFileIDCAsync("cmnd_img", file);
+
             return body;
         }
     }

@@ -22,7 +22,8 @@ namespace CoreOCR.Services.Services
         }
         public async Task<string> ReadVehicleRegistration(IFormFile file)
         {
-            var body = await AddAsync("extract/gtcn", file);
+            var body = await AddFileVehicleRegisAsync("gtcn_img", file);
+
             return body;
         }
     }
